@@ -1,21 +1,15 @@
 import React, {useContext} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Center} from '../../../components/Center';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {AuthContext} from '../../../Authentication/AuthProvider';
+import {ProfileParamList} from './ProfileParamList';
+import {Profile} from './screens/Profile';
+import {Settings} from './screens/Settings';
 
 interface ProfileStackProps {}
 
-const Stack = createStackNavigator();
-
-function Profile() {
-  return (
-    <Center>
-      <Text>Profile</Text>
-    </Center>
-  );
-}
+const Stack = createStackNavigator<ProfileParamList>();
 
 export const ProfileStack: React.FC<ProfileStackProps> = ({}) => {
   const {logout} = useContext(AuthContext);
@@ -41,6 +35,7 @@ export const ProfileStack: React.FC<ProfileStackProps> = ({}) => {
           },
         }}
       />
+      <Stack.Screen name="Settings" component={Settings} />
     </Stack.Navigator>
   );
 };

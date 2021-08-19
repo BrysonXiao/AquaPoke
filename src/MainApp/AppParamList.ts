@@ -1,6 +1,6 @@
 export type AppParamList = {
   HomeStack: undefined;
-  Stats: undefined;
-  Reminders: undefined;
+  StatsStack: undefined;
+  RemindersStack: undefined;
   ProfileStack: undefined;
 };

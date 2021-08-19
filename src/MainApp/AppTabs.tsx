@@ -1,30 +1,14 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {AppParamList} from './AppParamList';
-import {Center} from '../components/Center';
-import {Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHandPointRight} from '@fortawesome/free-solid-svg-icons';
 import {HomeStack} from './TabStacks/HomeStack/HomeStack';
 import {ProfileStack} from './TabStacks/ProfileStack/ProfileStack';
-
-function Stats() {
-  return (
-    <Center>
-      <Text>Stats</Text>
-    </Center>
-  );
-}
-
-function Reminders() {
-  return (
-    <Center>
-      <Text>Reminders</Text>
-    </Center>
-  );
-}
+import {StatsStack} from './TabStacks/StatsStack/StatsStack';
+import {RemindersStack} from './TabStacks/RemindersStack/RemindersStack';
 
 interface AppTabsProps {}
 
@@ -40,9 +24,9 @@ export const AppTabs: React.FC<AppTabsProps> = ({}) => {
 
           if (route.name === 'HomeStack') {
             iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'Stats') {
+          } else if (route.name === 'StatsStack') {
             iconName = focused ? 'bar-chart' : 'bar-chart-outline';
-          } else if (route.name === 'Reminders') {
+          } else if (route.name === 'RemindersStack') {
             return focused ? (
               <FontAwesomeIcon
                 icon={faHandPointRight}
@@ -62,8 +46,9 @@ export const AppTabs: React.FC<AppTabsProps> = ({}) => {
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
+        // tabBarActiveTintColor: 'dodgerblue',
+        // tabBarInactiveTintColor: 'dodgerblue',
+        // tabBarStyle: {backgroundColor: 'lightcyan'},
         headerShown: false,
       })}>
       <Tabs.Screen
@@ -71,8 +56,16 @@ export const AppTabs: React.FC<AppTabsProps> = ({}) => {
         component={HomeStack}
         options={{title: 'Home'}}
       />
-      <Tabs.Screen name="Stats" component={Stats} />
-      <Tabs.Screen name="Reminders" component={Reminders} />
+      <Tabs.Screen
+        name="StatsStack"
+        component={StatsStack}
+        options={{title: 'Stats'}}
+      />
+      <Tabs.Screen
+        name="RemindersStack"
+        component={RemindersStack}
+        options={{title: 'Reminders'}}
+      />
       <Tabs.Screen
         name="ProfileStack"
         component={ProfileStack}

@@ -1,40 +1,12 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Center} from '../../../components/Center';
-import {Button, Text} from 'react-native';
-import {HomeParamList, HomeStackNavProps} from './HomeParamList';
+import {HomeParamList} from './HomeParamList';
+import {Today} from './screens/Today';
+import {Record} from './screens/Record';
 
 interface HomeStackProps {}
 
 const Stack = createStackNavigator<HomeParamList>();
-
-function Today({navigation}: HomeStackNavProps<'Today'>) {
-  return (
-    <Center>
-      <Text>Today</Text>
-      <Button
-        title="Record water"
-        onPress={() => {
-          navigation.navigate('Record');
-        }}
-      />
-    </Center>
-  );
-}
-
-function Record({navigation}: HomeStackNavProps<'Record'>) {
-  return (
-    <Center>
-      <Text>Recording water</Text>
-      <Button
-        title="Done"
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
-    </Center>
-  );
-}
 
 export const HomeStack: React.FC<HomeStackProps> = ({}) => {
   return (
