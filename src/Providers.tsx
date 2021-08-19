@@ -1,5 +1,5 @@
 import React from 'react';
-import {AuthProvider} from './AuthProvider';
+import {AuthProvider} from './Authentication/AuthProvider';
 import {Routes} from './Routes';
 
 interface ProvidersProps {}

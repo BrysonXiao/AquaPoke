@@ -1,14 +1,14 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {AppParamList} from './AppParamList';
-import {Center} from './Center';
+import {Center} from '../components/Center';
 import {Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHandPointRight} from '@fortawesome/free-solid-svg-icons';
-import {HomeStack} from './HomeStack';
-import {ProfileStack} from './ProfileStack';
+import {HomeStack} from './TabStacks/HomeStack/HomeStack';
+import {ProfileStack} from './TabStacks/ProfileStack/ProfileStack';
 
 function Stats() {
   return (

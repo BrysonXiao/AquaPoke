@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Center} from './Center';
+import {Center} from '../../../components/Center';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {Icon} from 'react-native-elements';
-import {AuthContext} from './AuthProvider';
+import {AuthContext} from '../../../Authentication/AuthProvider';
 
 interface ProfileStackProps {}
 

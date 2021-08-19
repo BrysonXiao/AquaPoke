@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Center} from './Center';
+import {Center} from '../../../components/Center';
 import {Button, Text} from 'react-native';
 import {HomeParamList, HomeStackNavProps} from './HomeParamList';
 

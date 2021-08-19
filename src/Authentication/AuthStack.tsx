@@ -3,7 +3,7 @@ import React, {useContext} from 'react';
 import {Button, Text} from 'react-native';
 import {AuthNavProps, AuthParamList} from './AuthParamList';
 import {AuthContext} from './AuthProvider';
-import {Center} from './Center';
+import {Center} from '../components/Center';
 
 function Login({navigation}: AuthNavProps<'Login'>) {
   const {login} = useContext(AuthContext);
