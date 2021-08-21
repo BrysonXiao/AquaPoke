@@ -41,6 +41,9 @@ buck-out/
 *.keystore
 !debug.keystore
 
+# Java PID hprof
+android/java_pid79555.hprof
+
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
