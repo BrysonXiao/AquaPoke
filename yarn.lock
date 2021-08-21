@@ -1217,6 +1217,11 @@
   "resolved" "https://registry.npmjs.org/@react-native-firebase/auth/-/auth-12.7.1.tgz"
   "version" "12.7.1"
 
+"@react-native-firebase/firestore@^12.7.1":
+  "integrity" "sha512-uU8b7RJbwcLbo+Rq+plZkH99oFsblLeeN7Kf8vmCZzH6C81fh9DWbqlLF12Epeet2jcQ1tLfGuyp2KQD4pZYiA=="
+  "resolved" "https://registry.npmjs.org/@react-native-firebase/firestore/-/firestore-12.7.1.tgz"
+  "version" "12.7.1"
+
 "@react-native-google-signin/google-signin@^6.0.1":
   "integrity" "sha512-8Kyt3v6JcAQoJqZau3z4Mj+8R5Zv1yB8TfL/iCrB6ZI9lIR7gm4wuNzgpNSjX7OwNTboyhBek9Tjx8qJj7a6Mw=="
   "resolved" "https://registry.npmjs.org/@react-native-google-signin/google-signin/-/google-signin-6.0.1.tgz"
