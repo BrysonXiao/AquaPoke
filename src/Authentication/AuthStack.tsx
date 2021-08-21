@@ -6,7 +6,7 @@ import {AuthContext} from './AuthProvider';
 import {Center} from '../components/Center';
 
 function Login({navigation}: AuthNavProps<'Login'>) {
-  const {login} = useContext(AuthContext);
+  const {login, googleSignIn} = useContext(AuthContext);
   return (
     <Center>
       <Text>Login Screen</Text>
@@ -21,6 +21,12 @@ function Login({navigation}: AuthNavProps<'Login'>) {
         onPress={() => {
           navigation.navigate('Register');
         }}
+      />
+      <Button
+        title="Google Sign-In"
+        onPress={() =>
+          googleSignIn().then(() => console.log('Signed in with Google!'))
+        }
       />
     </Center>
   );

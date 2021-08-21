@@ -10,7 +10,10 @@ const Stack = createStackNavigator<HomeParamList>();
 
 export const HomeStack: React.FC<HomeStackProps> = ({}) => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
       <Stack.Screen name="Today" component={Today} />
       <Stack.Screen name="Record" component={Record} />
     </Stack.Navigator>

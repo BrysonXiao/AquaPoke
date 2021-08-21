@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "931657969351",
+    "project_id": "aquapoke-test",
+    "storage_bucket": "aquapoke-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931657969351:android:7770430b02e1613d42d8e2",
+        "android_client_info": {
+          "package_name": "com.aquapoke"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "931657969351-d6ulet0s9vr49ll02jruellsp0k0k9lq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aquapoke",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "931657969351-5a77vak65clu8nel9jvpuj8as5nu6l4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs6fVHyIwEiOdvqado3olZ3eQMDWhglco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931657969351-5a77vak65clu8nel9jvpuj8as5nu6l4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
