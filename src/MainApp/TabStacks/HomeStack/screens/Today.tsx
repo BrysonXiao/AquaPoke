@@ -24,6 +24,7 @@ export const Today: React.FC<HomeStackNavProps<'Today'>> = ({navigation}) => {
 
   useEffect(() => {
     if (user) {
+      // If compound like this, then need to create composite index in firestore
       const unsubscribe = streamWaterEventsByUserUID(
         user.uid,
         querySnapshot => {

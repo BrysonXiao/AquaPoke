@@ -24,5 +24,14 @@ export const streamWaterEventsByUserUID = (
   userUID: string,
   callback: (querySnapshot: FirebaseFirestoreTypes.QuerySnapshot) => void,
 ) => {
-  return waterEventsRef.where('userUID', '==', userUID).onSnapshot(callback);
+  return waterEventsRef
+    .where('userUID', '==', userUID)
+    .orderBy('createdAt', 'desc')
+    .onSnapshot(callback);
+};
+
+export const waterEventsByUserUID = (userUID: string) => {
+  return waterEventsRef
+    .where('userUID', '==', userUID)
+    .orderBy('createdAt', 'desc');
 };
