@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {checkUserSetup} from '../firebase/Firestore';
 
 GoogleSignin.configure({
   webClientId:
@@ -17,12 +18,16 @@ export const AuthContext = React.createContext<{
   logout: () => void;
   googleSignIn: () => Promise<FirebaseAuthTypes.UserCredential> | Promise<void>;
   initializing: boolean;
+  isSetup: boolean;
+  finishSetup: () => void;
 }>({
   user: null,
   login: () => {},
   logout: () => {},
   googleSignIn: async () => {},
   initializing: true,
+  isSetup: false,
+  finishSetup: () => {},
 });
 
 interface AuthProviderProps {}
@@ -31,11 +36,19 @@ interface AuthProviderProps {}
 export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
   const [user, setUser] = useState<User>(null);
   const [initializing, setInitializing] = useState(true);
+  const [isSetup, setIsSetup] = useState(false);
 
   // Handle user state changes
-  function onAuthStateChanged(userState: User) {
+  async function onAuthStateChanged(userState: User) {
     setUser(userState);
     if (initializing) {
+      setInitializing(false);
+    }
+
+    // On log in
+    if (userState) {
+      setInitializing(true);
+      setIsSetup(await checkUserSetup(userState.uid));
       setInitializing(false);
     }
   }
@@ -73,6 +86,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
           return auth().signInWithCredential(googleCredential);
         },
         initializing,
+        isSetup,
+        finishSetup: () => {
+          setIsSetup(true);
+        },
       }}>
       {children}
     </AuthContext.Provider>

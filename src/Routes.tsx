@@ -6,6 +6,7 @@ import {AuthContext} from './Authentication/AuthProvider';
 import {AppTabs} from './MainApp/AppTabs';
 import {AuthStack} from './Authentication/AuthStack';
 import {useColorScheme} from 'react-native';
+import {Setup} from './MainApp/Setup/Setup';
 
 interface RoutesProps {}
 
@@ -37,7 +38,7 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
   const scheme = useColorScheme();
 
   // Usually have to do async check to see if user is logged in or not
-  const {user, initializing} = useContext(AuthContext);
+  const {user, isSetup, initializing} = useContext(AuthContext);
 
   // Don't really think I need this?
   // useEffect(() => {
@@ -69,7 +70,7 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
 
   return (
     <NavigationContainer theme={scheme === 'dark' ? DarkTheme : LightTheme}>
-      {user ? <AppTabs /> : <AuthStack />}
+      {user ? isSetup ? <AppTabs /> : <Setup /> : <AuthStack />}
     </NavigationContainer>
   );
 };

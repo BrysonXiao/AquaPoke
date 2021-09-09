@@ -12,7 +12,9 @@ import firestore, {
 // };
 
 export const waterEventsRef = firestore().collection('waterEvents');
+export const usersRef = firestore().collection('users');
 
+// Water Events Utilities
 export const getWaterEvents = async () => {
   const waterEventDocument = await waterEventsRef
     .doc('NkZ0EYkc2ke13V4t3bnh')
@@ -34,4 +36,10 @@ export const waterEventsByUserUID = (userUID: string) => {
   return waterEventsRef
     .where('userUID', '==', userUID)
     .orderBy('createdAt', 'desc');
+};
+
+// Users utilities
+export const checkUserSetup = async (userUID: string) => {
+  const userDoc = await usersRef.doc(userUID).get();
+  return userDoc.exists;
 };
