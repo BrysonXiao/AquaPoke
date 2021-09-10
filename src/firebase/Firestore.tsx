@@ -44,10 +44,21 @@ export const checkUserSetup = async (userUID: string) => {
   return userDoc.exists;
 };
 
-// Username utilities
 export const checkUsername = async (username: string) => {
   const usernameDocSnapshot = await usersRef
-    .where('username', '==', username)
+    .where('username', '==', username.toLowerCase())
     .get();
   return !usernameDocSnapshot.empty;
+};
+
+export const addUsername = async (userUID: string, username: string) => {
+  try {
+    usersRef.doc(userUID).set({
+      username: username.toLowerCase(),
+      friends: [],
+    });
+    return true;
+  } catch (error) {
+    return false;
+  }
 };

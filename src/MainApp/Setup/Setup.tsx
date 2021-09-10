@@ -2,10 +2,10 @@ import React, {useContext, useState} from 'react';
 import {Text, Button, TextInput} from 'react-native';
 import {AuthContext} from '../../Authentication/AuthProvider';
 import {Center} from '../../components/Center';
-import {checkUsername} from '../../firebase/Firestore';
+import {addUsername, checkUsername} from '../../firebase/Firestore';
 
 export const Setup: React.FC = ({}) => {
-  const {finishSetup} = useContext(AuthContext);
+  const {finishSetup, user} = useContext(AuthContext);
 
   const [username, setUsername] = useState('');
   const [message, setMessage] = useState('');
@@ -70,6 +70,13 @@ export const Setup: React.FC = ({}) => {
       setMessage(_ => `${username} is taken`);
     } else {
       setMessage(_ => `${username} is available!`);
+      let success = false;
+      if (user) {
+        success = await addUsername(user.uid, username);
+      }
+      if (success) {
+        finishSetup();
+      }
     }
   };
 
