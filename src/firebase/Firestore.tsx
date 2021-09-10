@@ -43,3 +43,11 @@ export const checkUserSetup = async (userUID: string) => {
   const userDoc = await usersRef.doc(userUID).get();
   return userDoc.exists;
 };
+
+// Username utilities
+export const checkUsername = async (username: string) => {
+  const usernameDocSnapshot = await usersRef
+    .where('username', '==', username)
+    .get();
+  return !usernameDocSnapshot.empty;
+};
