@@ -3,7 +3,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 
 export type RemindersParamList = {
   Reminders: undefined;
-  Chat: undefined;
+  Chat: {friendUID: string};
 };
 
 export type RemindersStackNavProps<T extends keyof RemindersParamList> = {

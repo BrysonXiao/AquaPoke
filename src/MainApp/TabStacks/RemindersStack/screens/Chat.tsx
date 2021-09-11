@@ -5,10 +5,12 @@ import {RemindersStackNavProps} from '../RemindersParamList';
 
 export const Chat: React.FC<RemindersStackNavProps<'Chat'>> = ({
   navigation,
+  route,
 }) => {
+  const friendUID = route.params.friendUID;
   return (
     <Center>
-      <Text>Chat</Text>
+      <Text>Chatting with {friendUID}</Text>
       <Button
         title="Go to reminders"
         onPress={() => {
