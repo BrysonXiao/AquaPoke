@@ -14,7 +14,6 @@ import {StackNavigationProp} from '@react-navigation/stack';
 //   stackNavigator: StackNavigationProp<RemindersParamList, "Reminders">;
 // }
 
-// eslint-disable-next-line no-spaced-func
 export const ReminderTabsContext = React.createContext<{
   stackNavigator: StackNavigationProp<RemindersParamList, 'Reminders'> | null;
 }>({
