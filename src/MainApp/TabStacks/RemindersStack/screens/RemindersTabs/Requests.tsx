@@ -179,6 +179,7 @@ export const Requests: React.FC<RequestsProps> = ({}) => {
             <Text>----------------</Text>
           </View>
         )}
+        keyExtractor={item => item.key}
       />
       <Text>_______________</Text>
       <Text>_______________</Text>
@@ -199,6 +200,7 @@ export const Requests: React.FC<RequestsProps> = ({}) => {
             <Text>----------------</Text>
           </View>
         )}
+        keyExtractor={item => item.key}
       />
     </SafeAreaView>
   );

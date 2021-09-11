@@ -70,6 +70,7 @@ export const FriendMessages: React.FC<RemindersTabsNavProps<'FriendMessages'>> =
               <Text>_______________</Text>
             </View>
           )}
+          keyExtractor={item => item.uid}
         />
       </Center>
     );
