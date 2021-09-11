@@ -16,7 +16,7 @@ const LightTheme = {
     primary: 'white',
     background: 'white',
     card: 'dodgerblue',
-    text: 'lightcyan',
+    text: 'white',
     border: 'rgb(199, 199, 204)',
     notification: 'rgb(255, 69, 58)',
   },

@@ -11,7 +11,7 @@ export const Setup: React.FC = ({}) => {
   const [message, setMessage] = useState('');
   const [valid, setValid] = useState(false);
 
-  const handleUsernameChange = async (newUsername: string) => {
+  const handleUsernameChange = (newUsername: string) => {
     setUsername(newUsername);
     setMessage('');
 
@@ -46,22 +46,6 @@ export const Setup: React.FC = ({}) => {
     }
 
     setValid(true);
-
-    // // Check if username was taken
-    // console.log(`${newUsername} send`);
-    // lastSentUsername = newUsername;
-    // const usernameExists = await checkUsername(newUsername.toLowerCase());
-    // if (usernameExists) {
-    //   setMessage(_ => 'Username is taken');
-    //   setValid(false);
-    //   return;
-    // }
-    // if (newUsername === lastSentUsername) {
-    //   console.log(`${newUsername} updated`);
-    //   setMessage(_ => `${newUsername} is available!`);
-    //   setValid(true);
-    // }
-    // console.log(`${newUsername} back`);
   };
 
   const setupUsername = async () => {
