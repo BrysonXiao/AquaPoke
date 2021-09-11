@@ -147,12 +147,9 @@ export const Requests: React.FC<RequestsProps> = ({}) => {
     }
   };
 
-  const testAcceptRequest = () => {
-    // The string will eventually be the document key/id
-    // TODO: Check all the ways to error out of add request
-    // TODO: Known error sending request after already friends
-    // TODO: Use the enum here
-    acceptFriendRequestByID('dSGEOHYWNjavc9bdewgq');
+  const acceptRequest = async (requestID: string) => {
+    // Returns a enum
+    return await acceptFriendRequestByID(requestID);
   };
 
   return (
@@ -164,7 +161,6 @@ export const Requests: React.FC<RequestsProps> = ({}) => {
       />
       {message.length > 0 && <Text>{message}</Text>}
       <Button title="Send Friend Request" onPress={sendFriendRequest} />
-      <Button title="Test Accept Request" onPress={testAcceptRequest} />
       <Text>Incoming Requests</Text>
       <FlatList
         data={incomingRequests}
@@ -179,6 +175,7 @@ export const Requests: React.FC<RequestsProps> = ({}) => {
                 ? item.createdAt.toDate().toString()
                 : 'Timestamp not yet set'}
             </Text>
+            <Button title="Accept" onPress={() => acceptRequest(item.key)} />
             <Text>----------------</Text>
           </View>
         )}

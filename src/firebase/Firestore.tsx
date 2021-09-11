@@ -130,6 +130,13 @@ export const checkIfFriends = async (
   }
 };
 
+export const streamUserByUID = (
+  userUID: string,
+  callback: (documentSnapshot: FirebaseFirestoreTypes.DocumentSnapshot) => void,
+) => {
+  return usersRef.doc(userUID).onSnapshot(callback);
+};
+
 // Friend Requests Utilities
 export const addRequest = async (
   fromUID: string,
@@ -178,7 +185,7 @@ export const addRequest = async (
     createdAt: serverTimestamp(),
   });
 
-  return 1;
+  return AddRequestCode.Success;
 };
 
 export const getRequestQuerySnapshotFromUID = async (

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {Button, Text} from 'react-native';
 import {AuthContext} from '../../../../Authentication/AuthProvider';
 import {Center} from '../../../../components/Center';
@@ -10,12 +10,13 @@ export const Profile: React.FC<ProfileStackNavProps<'Profile'>> = ({
 }) => {
   const {user} = useContext(AuthContext);
   const [username, setUsername] = useState('');
+  const mountedRef = useRef(true);
 
   useEffect(() => {
     const fetchUsername = async () => {
       if (user) {
         const fetchResult = await getUsernameFromUID(user.uid);
-        if (fetchResult) {
+        if (fetchResult && mountedRef.current) {
           setUsername(fetchResult);
         }
       }
@@ -23,6 +24,9 @@ export const Profile: React.FC<ProfileStackNavProps<'Profile'>> = ({
     if (user) {
       fetchUsername();
     }
+    return () => {
+      mountedRef.current = false;
+    };
   }, [user]);
 
   return (

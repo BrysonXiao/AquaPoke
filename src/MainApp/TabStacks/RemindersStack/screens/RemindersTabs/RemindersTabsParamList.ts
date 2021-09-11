@@ -1,4 +1,8 @@
+import {RemindersStackNavProps} from '../../RemindersParamList';
+
 export type RemindersTabsParamList = {
-  FriendMessages: undefined;
+  FriendMessages: {
+    stackNavigator: RemindersStackNavProps<'Reminders'>;
+  };
   Requests: undefined;
 };
