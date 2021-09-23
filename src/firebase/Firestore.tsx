@@ -28,6 +28,7 @@ export enum AcceptRequestCode {
 export const waterEventsRef = firestore().collection('waterEvents');
 export const usersRef = firestore().collection('users');
 export const friendRequestsRef = firestore().collection('friendRequests');
+export const messagesRef = firestore().collection('messages');
 
 // Water Events Utilities
 export const getWaterEvents = async () => {
@@ -250,4 +251,44 @@ const addFriend = async (userUID: string, friendUID: string) => {
   usersRef.doc(userUID).update({
     friends: firebase.firestore.FieldValue.arrayUnion(friendUID),
   });
+};
+
+// Messages utilities
+export const addMessage = async (
+  fromUID: string,
+  toUID: string,
+  message: string,
+) => {
+  const {serverTimestamp} = firebase.firestore.FieldValue;
+
+  messagesRef.add({
+    createdAt: serverTimestamp(),
+    fromUID: fromUID,
+    toUID: toUID,
+    message: message,
+  });
+};
+
+export const streamSentMessagesByUserUIDs = (
+  userUID: string,
+  friendUID: string,
+  callback: (querySnapshot: FirebaseFirestoreTypes.QuerySnapshot) => void,
+) => {
+  return messagesRef
+    .where('fromUID', '==', userUID)
+    .where('toUID', '==', friendUID)
+    .orderBy('createdAt', 'desc')
+    .onSnapshot(callback);
+};
+
+export const streamReceivedMessagesByUserUIDs = (
+  userUID: string,
+  friendUID: string,
+  callback: (querySnapshot: FirebaseFirestoreTypes.QuerySnapshot) => void,
+) => {
+  return messagesRef
+    .where('fromUID', '==', friendUID)
+    .where('toUID', '==', userUID)
+    .orderBy('createdAt', 'desc')
+    .onSnapshot(callback);
 };
